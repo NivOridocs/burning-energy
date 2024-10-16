@@ -1,5 +1,7 @@
 package niv.burning.energy;
 
+import static java.util.function.Predicate.not;
+
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.BooleanSupplier;
@@ -36,6 +38,7 @@ public final class BurningEnergyFallback<A, B> implements BlockApiProvider<B, @N
             @Nullable BlockEntity blockEntity, @Nullable Direction direction) {
         if (this.enable.getAsBoolean()) {
             return Optional.ofNullable(this.lookup.getProvider(state.getBlock()))
+                    .filter(not(BurningEnergyFallback.class::isInstance))
                     .map(provider -> provider.find(world, pos, state, blockEntity, direction))
                     .map(this.constructor)
                     .orElse(null);
