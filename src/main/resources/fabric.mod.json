@@ -3,13 +3,13 @@
 	"id": "burning-energy",
 	"version": "${version}",
 	"name": "Burning Energy",
-	"description": "TODO",
+	"description": "A server mod that connects the Fabric Energy API to Burning, making every storage of one one of the other, too.",
 	"authors": [
 		"Niv Oridocs"
 	],
 	"contact": {
-		"homepage": "TODO",
-		"sources": "TODO"
+		"homepage": "https://modrinth.com/mod/burning-energy",
+		"sources": "https://github.com/NivOridocs/burning-energy"
 	},
 	"license": "MIT",
 	"icon": "assets/burning-energy/icon.png",
@@ -22,6 +22,9 @@
 	"depends": {
 		"fabricloader": ">=0.16.5",
 		"minecraft": "~1.21",
-		"java": ">=21"
+		"java": ">=21",
+        "fabric-api": "*",
+        "burning": "*",
+        "team_reborn_energy": ">=4.1.0"
 	}
 }
