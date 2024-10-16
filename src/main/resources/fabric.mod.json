@@ -3,7 +3,7 @@
 	"id": "burning-energy",
 	"version": "${version}",
 	"name": "Burning Energy",
-	"description": "A server mod that turns every burning storage into an energy storage and vice versa.",
+	"description": "A server mod that connects the Fabric Energy API to Burning, making every storage of one one of the other, too.",
 	"authors": [
 		"Niv Oridocs"
 	],
