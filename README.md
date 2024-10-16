@@ -9,13 +9,13 @@ For instance, you can use any energy generator to power a good old vanilla **Fur
 Burning Energy only has two configurations.
 
 ```json
-"enableEnergyStorageFallback": true // enabled by default
+"enableEnergyToBurning": true // enabled by default
 ```
 
 This will enable energy mods to transfer energy to any burning storage.
 
 ```json
-"enableBurningStorageFallback": false // disabled by default
+"enableBurningToEnergy": false // disabled by default
 ```
 
 This will enable burning mods to transfer burning fuel to any energy storage.
