@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '1.7-SNAPSHOT'
 	id 'maven-publish'
+	id 'com.modrinth.minotaur' version '2.+'
 }
 
 version = project.mod_version
@@ -79,4 +80,20 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
+}
+
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+    projectId = "${project.project_id}"
+	versionName = "Burning Energy ${project.mod_version}"
+	changelog = "sh CHANGELOG.sh".execute().text
+    versionType = "release"
+    gameVersions = ["1.21", "1.21.1"]
+	uploadFile = remapJar
+	syncBodyFrom = "sh README.sh".execute().text
+	dependencies {
+        required.project "fabric-api"
+		required.project "burning"
+    }
+	// debugMode = true
 }
