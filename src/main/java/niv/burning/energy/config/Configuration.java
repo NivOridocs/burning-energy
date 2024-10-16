@@ -11,8 +11,8 @@ public final class Configuration {
             .createArrayBacked(Runnable.class,
                     runnables -> () -> Stream.of(runnables).forEach(Runnable::run));
 
-    private boolean enableEnergyStorageFallback = true;
-    private boolean enableBurningStorageFallback = false;
+    private boolean enableEnergyToBurning = true;
+    private boolean enableBurningToEnergy = false;
 
     Configuration() {
     }
@@ -25,11 +25,11 @@ public final class Configuration {
         getInstance();
     }
 
-    public static final boolean enableEnergyStorageFallback() {
-        return getInstance().enableEnergyStorageFallback;
+    public static final boolean enableEnergyToBurning() {
+        return getInstance().enableEnergyToBurning;
     }
 
-    public static final boolean enableBurningStorageFallback() {
-        return getInstance().enableBurningStorageFallback;
+    public static final boolean enableBurningToEnergy() {
+        return getInstance().enableBurningToEnergy;
     }
 }

@@ -11,19 +11,26 @@ import niv.burning.energy.config.Configuration;
 import team.reborn.energy.api.EnergyStorage;
 
 public class BurningEnergy implements ModInitializer {
+
     public static final String MOD_ID = "burning-energy";
 
-    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+    public static final String MOD_NAME = "Burning Energy";
+
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_NAME);
 
     @Override
     public void onInitialize() {
         LOGGER.info("Initialize");
 
         EnergyStorage.SIDED.registerFallback(new BurningEnergyFallback<>(
-                Configuration::enableEnergyStorageFallback, BurningStorage.SIDED, BurningFallbackEnergyStorage::new));
+                Configuration::enableEnergyToBurning, BurningStorage.SIDED, BurningFallbackEnergyStorage::new));
 
         BurningStorage.SIDED.registerFallback(new BurningEnergyFallback<>(
-                Configuration::enableBurningStorageFallback, EnergyStorage.SIDED, EnergyFallbackBurningStorage::new));
+                Configuration::enableBurningToEnergy, EnergyStorage.SIDED, EnergyFallbackBurningStorage::new));
+
+        Configuration.LOADED.register(() -> LOGGER.info("Load configuration"));
+
+        Configuration.init();
     }
 
     public static final int getEnergyDuration(ItemStack stack) {
